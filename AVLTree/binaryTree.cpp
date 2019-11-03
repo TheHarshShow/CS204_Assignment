@@ -191,14 +191,14 @@ void BinaryTree<K,V>::deleteNode(struct treeNode<K,V> *nodeToBeDeleted){
 
 
 			root=nodeToBeDeleted->rightChild;
-			root->parent=NULL;
+			if(root!=NULL)root->parent=NULL;
 			free(nodeToBeDeleted);
 
 		} else if(nodeToBeDeleted->rightChild == NULL){
 
 
 			root=nodeToBeDeleted->leftChild;
-			root->parent=NULL;
+			if(root!=NULL)root->parent=NULL;
 			free(nodeToBeDeleted);
 
 		} else{

@@ -257,7 +257,7 @@ struct treeNode<K,V>* BalancedTree<K,V>::deleteNodeWithKey(K key, struct treeNod
 
 
 					this->root=node->rightChild;
-					(node->rightChild)->parent=NULL;
+					if(this->root!=NULL)(this->root)->parent=NULL;
 					free(node);
 
 				} else{
@@ -284,7 +284,7 @@ struct treeNode<K,V>* BalancedTree<K,V>::deleteNodeWithKey(K key, struct treeNod
 				if(node==this->root){
 
 					this->root=node->leftChild;
-					(node->leftChild)->parent=NULL;
+					if(this->root!=NULL)(this->root)->parent=NULL;
 					free(node);
 
 				} else{
