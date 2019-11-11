@@ -6,7 +6,7 @@
 #include "graph.h"
 #include<tuple>
 #define MP make_pair
-#define INF 100000000000000000
+#define INF 1000000000
 
 using namespace std;
 
