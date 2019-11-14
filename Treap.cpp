@@ -25,9 +25,11 @@ using namespace std;
 
 struct NODE {
 
-    ll key, priority; 
+    ll key;
+    ll priority; 
 
-    struct NODE *left, *right; 
+    struct NODE *left;
+    struct NODE *right; 
 
 };
 
@@ -161,6 +163,11 @@ int main() {
     root = deleteNode(root, 30);
     inorderPrint(root); 
   
+    cout<<endl;
+
+    root=deleteNode(root, 70);
+    inorderPrint(root);
+
     cout<<endl;
 
     ll n;

@@ -24,6 +24,17 @@ typedef pair<long long,long long> pll;
 ll finde;
 
 
+/*
+	
+We created two types of nodes:
+	Linked list nodes
+	Tree nodes
+
+Every tree node contains a pointer to a linked list sentinel
+This linked list contains pointers to tree nodes which we call the children of the treenode containing the pointer to the linked list.
+
+*/
+
 struct node {
 
 	struct node *next;
@@ -41,6 +52,8 @@ struct treenode {
 	struct treenode *parent;
 
 };
+
+//The helpnode and helpflag variables assist with the getNodeWithKey function by using an assistant function that first checks if such a node exists.
 
 struct treenode* helpnode;
 ll helpflag;
@@ -67,6 +80,13 @@ struct treenode *createtreenode(){
 }
 
 
+/*
+Insert takes a pointer to the node we want as the parent and the key to be inserted. 
+If you want to pass a parent key rather want to give parent key as input, use getNodeWithKey function to get node with the required key.
+Insert simply adds a new node to the beginning of the linked list of children of the parent and adds a new node with given key as the child of that node.
+Parent pointers are alse updated.
+*/
+
 void insert(struct treenode *parent, ll k1){
 
 	struct treenode *temp=createtreenode();
@@ -83,6 +103,10 @@ void insert(struct treenode *parent, ll k1){
 	temp->parent=parent;
 
 }
+
+/*
+Assistant for find key functions to determine which value is returned. Uses post order search.
+*/
 
 void findKeyAssist(struct treenode *root, ll k1){
 
@@ -118,6 +142,8 @@ bool findKey(struct treenode *root, ll k1){
 
 }
 
+
+//Similar to findKey. This one actually helps get a node with the key rather than just stating whether it exists. The main getNodeWithKey function returns the node.
 
 void getNodeWithKeyAssist(struct treenode * root, ll k1){
 
@@ -164,6 +190,15 @@ struct treenode *getNodeWithKey(struct treenode * root, ll k1){
 
 
 }
+
+
+/*
+
+This one is interesting. If the node is the root node and doesn't have any children, free the node.
+If it is a leaf node go to its parent and look for the linked list node with the node to be deleted as child of it.
+Next remove this node from the linked list by updating pointers. Delete all unnecessary memory
+
+*/
 
 void deleteNode(struct treenode * root){
 
@@ -236,6 +271,8 @@ void deleteNode(struct treenode * root){
 
 }
 
+
+//Post order print
 
 void print(struct treenode *root){
 
